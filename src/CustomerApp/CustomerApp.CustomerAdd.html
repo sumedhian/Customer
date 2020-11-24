@@ -1,0 +1,19 @@
+Name : <input type="text" [(ngModel)]="customerObj.name"> <br>
+age : <input type="text" [(ngModel)]="customerObj.age"> <br>
+Amount : <input type="text" [(ngModel)]="customerObj.amount"> <br>
+<input type="button" value="Add" (click)="Add()"/><br>
+{{customerObj.name}} <br>
+<b>{{customerObj.age}} </b><br>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>age</td>
+        <td>amount</td>
+    </tr>
+    <tr *ngFor="let item of customerObjs">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.amount}}</td>
+        <td><a href="#" (click)="Remove(item)">Remove</a></td>
+    </tr>
+</table>
