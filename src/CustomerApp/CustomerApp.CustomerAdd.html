@@ -1,9 +1,15 @@
-Name : <input type="text" [(ngModel)]="customerObj.name"> <br>
-age : <input type="text" [(ngModel)]="customerObj.age"> <br>
-Amount : <input type="text" [(ngModel)]="customerObj.amount"> <br>
-<input type="button" value="Add" (click)="Add()"/><br>
-{{customerObj.name}} <br>
-<b>{{customerObj.age}} </b><br>
+<form [formGroup]="customerObj.formgroup">
+Name : <input type="text" formControlName="CustomerNameControl" 
+[(ngModel)]="customerObj.name"> <br>
+age : <input type="text" [(ngModel)]="customerObj.age" [ngModelOptions]="{standalone: true}"> <br>
+Amount : <input type="text" [(ngModel)]="customerObj.amount" [ngModelOptions]="{standalone: true}"> <br>
+Email : <input type="text" formControlName="EmailControl"  
+[(ngModel)]="customerObj.email"> <br>
+</form>
+<input type="button" [disabled]="!(customerObj.formgroup.valid)" value="Add" (click)="Add()"/><br>
+<div  [hidden]="!(customerObj.formgroup.controls['CustomerNameControl'].hasError('required'))">Name is required</div><br>
+<div [hidden]="!(customerObj.formgroup.controls['EmailControl'].hasError('required'))">Email is required</div><br>
+<div [hidden]="!(customerObj.formgroup.controls['EmailControl'].hasError('pattern'))">Email format not proper</div><br>
 <table>
     <tr>
         <td>Name</td>

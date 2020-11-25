@@ -9,5 +9,6 @@ export class CustomerComponent {
   Add(){
     this.customerObjs.push(this.customerObj);
     this.customerObj = new Customer();// cleared the object
+    //this.customerObj.formgroup.updateValueAndValidity(); // forcibly
   }
 }
